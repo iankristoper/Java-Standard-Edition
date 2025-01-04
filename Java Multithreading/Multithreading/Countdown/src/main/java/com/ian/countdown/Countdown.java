@@ -16,7 +16,7 @@ import java.util.Scanner;
 
 
 public class Countdown {
-
+    
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -45,7 +45,7 @@ public class Countdown {
         }
 
         
-        // Wait for all timers to finish
+        // Wait for all timers to finish 
         for (Thread thread : threads) {
             try {
                 thread.join();
@@ -58,7 +58,7 @@ public class Countdown {
         scanner.close();
     }
     
-
+    
     // Run timer method
     public static void runTimer(int timerNumber, int duration) {
         System.out.println("Timer " + timerNumber + " started with " + duration + " seconds.");
@@ -78,3 +78,6 @@ public class Countdown {
         System.out.println("Timer " + timerNumber + " has finished!");
     }
 }
+
+
+
