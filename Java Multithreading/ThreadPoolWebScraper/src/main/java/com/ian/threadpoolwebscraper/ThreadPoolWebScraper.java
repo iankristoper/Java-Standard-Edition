@@ -28,7 +28,7 @@ public class ThreadPoolWebScraper {
         // List of URLs to scrape
         List<String> urls = Arrays.asList(
             "https://www.youtube.com",
-            "https://admin.fasthosts.co.uk/Auth/Login",
+            "",
             ""
         );
 
