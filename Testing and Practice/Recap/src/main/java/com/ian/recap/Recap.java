@@ -68,7 +68,7 @@ interface Animal {
 
 interface Skills {
     
-    void animalSkills();
+    
     
     default void skillNature() {
         System.out.println("Skill is the best weapon for animals");
@@ -77,10 +77,12 @@ interface Skills {
 
 class Dog implements Animal, Skills {
     
+    @Override
     public void animalSound() {
         System.out.println("Bark!");
     }
     
+    @Override
     public void skillNature() {
         System.out.println("Biting, Running, Sharp sense");
     }
@@ -158,6 +160,183 @@ class OuterClass3 {
 //===================================================================================
 
 
+//singleton class, allow only one intance to be created 
+class Singleton {
+    
+    private static Singleton instance;
+    
+    private Singleton() {}; //private constructor 
+    
+    public static Singleton getInstance() {
+        if(instance == null) {
+            instance = new Singleton();
+        }
+        
+        return instance;
+    }
+}
+
+
+//===================================================================================
+
+
+//utility class a class that only contains static methods and fields
+class SolveUtils {
+    
+    public static int add(int a, int b) {
+        return a + b;
+    }
+}
+
+
+//===================================================================================
+
+
+//enum class is a class that represents a fixed set of constants 
+enum Day {
+    MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY
+}
+
+
+//===================================================================================
+
+
+class Parent {
+    
+    void display() {
+        System.out.println("This is method from the parent class");
+    }
+}
+
+class Child1 extends Parent {
+    
+    void show() {
+        System.out.println("This is from the child class");
+    }
+}
+ 
+
+//===================================================================================
+
+
+//multilevel inheritance a class tha inherits from a class that already inherits from another class 
+class Food {
+    
+    void food() {
+        System.out.println("This is from the parent class");
+    }
+}
+
+class Meat extends Food {
+    
+    void pork() {
+        System.out.println("This is from the meat class");
+    }
+}
+
+class Viand extends Meat {
+    
+    void humba() {
+        System.out.println("This is from the viand class");
+    }
+}
+
+
+//===================================================================================
+
+
+//hierarchical inheritance multiple classes inherent from a single parent class
+class Mammal {
+    
+    void mommy() {
+        System.out.println("This is a mammal");
+    }
+}
+
+class Cat extends Mammal {
+    
+    void meow() {
+        System.out.println("Meow");
+    }
+}
+
+class Pig extends Mammal {
+    
+    void oink() {
+        System.out.println("Oink");
+    }
+}
+
+
+//===================================================================================
+
+
+//multiple inheritance is a class that inherit different interfaces 
+interface Power {
+    
+    void rasengan();
+    void kagibunshin();
+}
+
+interface Attitude {
+    
+    void introvert();
+    void extrovert();
+    void ambivert();
+}
+
+class Character implements Power, Attitude {
+    
+    @Override
+    public void rasengan() {
+        System.out.println("Level 5");
+    }
+    
+    @Override
+    public void introvert() {
+        System.out.println("Anti social");
+    }
+    
+    @Override
+    public void kagibunshin() {
+        System.out.println("None");
+    }
+    
+    @Override 
+    public void extrovert() {
+        System.out.println("None");
+    }
+    
+    @Override
+    public void ambivert() {
+        System.out.println("None");
+    }
+}
+
+
+//===================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 public class Recap {
 
     public static void main(String[] args) {
@@ -193,6 +372,12 @@ public class Recap {
         };
         
         outer3.greet();
+        
+        
+        //for class inheritance 
+        Child1 child = new Child1();
+        child.display();  //inheret from the parent class 
+        child.show();   //from the child class 
         
     }
 }
