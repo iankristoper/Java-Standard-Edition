@@ -317,12 +317,31 @@ class Character implements Power, Attitude {
 //===================================================================================
 
 
+//polymorphism with interface is a class implementing multiple interfaces 
+interface Sound {
+    
+    void sound();
+}
+
+class Lion implements Sound {
+    
+    @Override
+    public void sound() {
+        System.out.println("Roarrrrr");
+    }
+}
+
+class Bird implements Sound {
+    
+    @Override
+    public void sound() {
+        System.out.println("Tweet tweettttt");
+    }
+}
 
 
 
-
-
-
+//===================================================================================
 
 
 
@@ -379,5 +398,14 @@ public class Recap {
         child.display();  //inheret from the parent class 
         child.show();   //from the child class 
         
+        
+        //for polymorphism with interface
+        Sound animalSound;
+        
+        animalSound = new Lion();
+        animalSound.sound();
+        
+        animalSound = new Bird();
+        animalSound.sound();     
     }
 }
