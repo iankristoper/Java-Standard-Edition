@@ -344,6 +344,98 @@ class Bird implements Sound {
 //===================================================================================
 
 
+//try and catch - exception handling 
+//try block - this is where you put a code that you feel will give an error
+//catch block - catch the error and get whats the reason of the error
+//finally block - will always be executed no matter what
+//throw keyword - used to explicitly throw an exception 
+class ErrorHandling {
+    
+    void handlingError() {
+        
+        try {
+            int sampleError = 10/0;
+            System.out.println(sampleError);
+        }
+        
+        catch (ArithmeticException error) {
+            System.out.println("There is an error " + error.getMessage());
+        }
+        
+        finally {
+            System.out.println("This block is always getting executed");
+        }      
+    }
+    
+    static void throwingError(int age) {
+        
+        if(age < 18) {
+            throw new IllegalArgumentException("Age must be above 18");
+        } 
+        
+        else {
+            System.out.println("Legal Age, Accepted!");
+        }
+    }
+}
+
+
+//===================================================================================
+
+
+//generics allows you to write flexible and type safety code 
+//<T>, <E>, <K, V>
+//T - common as general type 
+//generic class with type parameter T
+class Box<T> {
+    
+    private T value;
+    
+    public void set(T value) {
+        this.value = value;
+    }
+    
+    public T get() {
+        return value;
+    }
+    
+    //generic method it works in any type
+    public static <T> void printArray(T[] array) {
+        for(T element : array) {
+            System.out.println(element);
+        }
+    }
+    
+}
+
+
+//===================================================================================
+
+
+//bounded type parameters you can restrict the types that can be used in generics 
+//extends - allow only a specific type or its subclasses 
+//super - 
+class Calculator<T extends Number> {  //accepts only Number or its subclasses (Integer, Double, etc)
+    
+    public double add(T number1, T number2) {
+        return number1.doubleValue() + number2.doubleValue();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -406,6 +498,38 @@ public class Recap {
         animalSound.sound();
         
         animalSound = new Bird();
-        animalSound.sound();     
+        animalSound.sound();  
+        
+        
+        //for generics 
+        Box<String> stringBox = new Box<>();
+        stringBox.set("Hello can I request for a 100000000000000 amount of money");
+        System.out.println(stringBox.get());
+        
+        Box<Integer> intBox = new Box<>();
+        intBox.set(1000000000);
+        System.out.println(intBox.get());
+        
+        //using the generic method 
+        String[] names = {"Ian", "Rhina"};
+        Integer[] numbers = {1, 2, 3};
+        
+        showArray(names);
+        showArray(numbers);
+        
+        Calculator<Integer> calcuInt = new Calculator<>();
+        calcuInt.add(10, 12);
+        
+        Calculator<Double> calcuDouble = new Calculator<>();
+        System.out.println(calcuDouble.add(13.5, 4.3));
+        
+        
+    }
+    
+    //generic methods you can used this to any type 
+    public static <T> void showArray(T[] element) {
+        for(T copy : element) {
+            System.out.println(copy);
+        }
     }
 }
