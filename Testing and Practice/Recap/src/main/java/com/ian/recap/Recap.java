@@ -13,6 +13,7 @@ class ConcreteClassSample {
     public void normalMethod() {     
         System.out.println("This is an example of conrecte class ");
     }
+     
     
 }
 
