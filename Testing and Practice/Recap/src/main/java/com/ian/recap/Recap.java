@@ -1,11 +1,6 @@
 
 package com.ian.recap;
 
-
-
-
-
-//regular class that can be instantiated to create objects 
 class ConcreteClassSample {
     
     String normalVariable;
@@ -424,8 +419,52 @@ class Calculator<T extends Number> {  //accepts only Number or its subclasses (I
 }
 
 
+//===================================================================================
 
 
+//multithreading a technique where multiple threads run independently within the same process 
+//improves efficiency by running multiple operations at the same time 
+//Key Idea: Multiple threads execute simultaneously, often on different CPU cores.
+//Example in Real Life: A restaurant where one chef is cooking, another is preparing ingredients, and a waiter is serving food—all happening at the same time.
+
+
+//concurrency will handle multiple tasks, ensuring they execute correctly and efficiently.
+//Goal: Manages shared resources between multiple threads safely to avoid issues like race conditions.
+//Key Idea: Not necessarily executing at the same time, but managing multiple tasks properly.
+//Example in Real Life: Two people editing the same document. The system ensures no one overwrites the other's changes.
+
+class Task1 extends Thread {
+    
+    public void run() {
+        for(int i = 0; i < 5; i++) {
+            System.out.println("Task 1: " + i);
+            
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+}
+
+class Task2 extends Thread {
+    
+    public void run() {
+        for(int i = 0; i < 5; i++) {
+            System.out.println("Task 2: " + i);
+            
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+}
+
+
+//===================================================================================
 
 
 
@@ -524,6 +563,17 @@ public class Recap {
         Calculator<Double> calcuDouble = new Calculator<>();
         System.out.println(calcuDouble.add(13.5, 4.3));
         
+        
+        //multithreading 
+        Task1 t1 = new Task1();
+        Task2 t2 = new Task2();
+        
+        t1.start();
+        t2.start();
+        
+        
+        //concurrency
+   
         
     }
     
