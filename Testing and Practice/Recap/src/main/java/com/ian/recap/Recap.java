@@ -1,5 +1,12 @@
-
 package com.ian.recap;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.FileReader;
+
+
+
+
 
 class ConcreteClassSample {
     
@@ -465,6 +472,54 @@ class Task2 extends Thread {
 
 
 //===================================================================================
+
+
+//java io - manage the reading and writing of different data 
+
+class WriteExample {
+    
+    public void writerMethod() {
+        
+        try {
+            
+            FileWriter writer = new FileWriter("writer.txt");
+            
+            writer.write("Hello this is from the java.io");  //write data on the created file
+            writer.close();  //close the file   
+            
+        } catch (IOException e) {
+            System.out.println("An error occured: " + e.getMessage());
+        }
+    } 
+    
+    //✔ Creates a file if it doesn’t exist
+    //✔ Writes "Hello, Java I/O!" into example.txt
+}
+
+class ReaderExample {
+    
+    public void readerMethod() {
+        
+        try {
+            
+            FileReader reader = new FileReader("example.txt");
+            
+            int character;
+            
+            while((character = reader.read()) != -1) { //read until the end of the file
+                System.out.print((char) character);                
+            }
+            
+            reader.close();   
+            
+        } catch (IOException e) {
+            System.out.println("An error occured: " + e.getMessage());
+        }
+    }
+    
+    //✔ Reads content of example.txt and prints it
+    //✔ Uses .read() to read characters one by one
+}
 
 
 
