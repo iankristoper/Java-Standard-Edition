@@ -1,8 +1,11 @@
 package com.ian.recap;
 
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 
 
 
@@ -476,6 +479,7 @@ class Task2 extends Thread {
 
 //java io - manage the reading and writing of different data 
 
+//writing to a file (basic)
 class WriteExample {
     
     public void writerMethod() {
@@ -496,6 +500,7 @@ class WriteExample {
     //✔ Writes "Hello, Java I/O!" into example.txt
 }
 
+//reading from a file (basic)
 class ReaderExample {
     
     public void readerMethod() {
@@ -521,11 +526,86 @@ class ReaderExample {
     //✔ Uses .read() to read characters one by one
 }
 
+//using bufferreader for effiecient reading 
+class BufferReader {
+    
+    public void bufferReader() {
+        
+        try {
+            
+            BufferedReader reader = new BufferedReader(new FileReader("example.txt"));
+            String line;
+            
+            while((line = reader.readLine()) != null) {  //read each line 
+                System.out.println(line);
+            }
+            
+            reader.close();  
+            
+        } catch(IOException e) {
+            System.out.println("An error occured: " + e.getMessage());
+        }
+    }
+}
 
+//using bufferedwriter 
+class BufferWriter {
+    
+    public void bufferWriter() {
+        
+        try {
+            
+            BufferedWriter writer = new BufferedWriter(new FileWriter("example.txt",true)); //append mode 
+            
+            writer.writer("This is an appended line");
+            writer.newline(); //add a new line 
+            writer.close();
+            
+            System.out.println("Data appended successfully");
+            
+        } catch(IOException e) {
+            System.out.println("An error occured: " + e.getMessage());
+        }
+    }
+    
+    //✔ Writes multiple lines efficiently
+    //✔ Uses .newLine() to add a new line
+    //✔ true in FileWriter("example.txt", true) means it will append instead of overwrite
+}
 
+//using the file class
+class FileExample {
+    
+    public void fileIO() {
+        
+        File file = new File("example.txt");
+        
+        if(file.exists()) {
+            System.out.println("File existing in the directory");
+        } else {
+            System.out.println("File does not exist");
+        }
+    }
+    
+    public void fileCreate() {
+        
+        try {
+            
+            File file = new File("example.txt");
+            
+            if(file.createNewFile()) {
+                System.out.println("File is created: " + file.getName());
+            } else {
+                System.out.println("File already exists");
+            }
+            
+        } catch(IOException e) {
+            System.out.println("An error occured: " + e.getMessage());
+        }
+    }
+}
 
-
-
+    
 
 
 
