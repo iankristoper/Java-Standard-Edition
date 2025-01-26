@@ -105,19 +105,58 @@ class FileManager {
                 System.out.println("An error occured: " + e.getMessage());
             }
             
+        } else {
+            System.out.println("File not found");
         }
         
     }
     
-    public void removeFile() {
+    public void removeFile(Scanner scanner) {
+        
+        System.out.print("Enter the file to be removed: ");
+        String fileName = scanner.nextLine();
+        
+        File file = new File(FOLDER_PATH + fileName);
+        
+        if(file.exists()) {
+            if(file.delete()) {
+                System.out.println("File deleted successfully");
+            } else {
+                System.out.println("Error deleting the file");
+            }         
+        } else {
+            System.out.println("File not found");
+        }
         
     }
     
-    public void viewFile() {
+    public void viewFile(Scanner scanner) {
         
+        System.out.print("Enter file to view: ");
+        String fileName = scanner.nextLine();
+        
+        File file = new File(FOLDER_PATH + fileName);
+        
+        if(file.exists()) {
+            try(BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                
+                String line;
+                
+                System.out.print("Contents of " + fileName + ": ");
+                
+                while((line = reader.readLine()) != null) {
+                    System.out.println(line);
+                }
+            } catch(IOException e) {
+                System.out.println("An error occured: " + e.getMessage());
+            }
+        } else {
+            System.out.println("File not found");
+        }
     }
     
     public void viewAllFiles() {
+        
         
     }
     
